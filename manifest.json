@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "TabPin",
+  "version": "1.0",
+  "description": "Pin your favorite tabs automatically when opening a new window",
+  "permissions": ["tabs", "windows", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/1.png",
+    "48": "icons/1.png",
+    "128": "icons/1.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/1.png",
+      "24": "icons/1.png",
+      "32": "icons/1.png",
+      "48": "icons/1.png",
+      "128": "icons/1.png"
+    },
+    "default_title": "TabPin",
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

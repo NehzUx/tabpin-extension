@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pin Tabs Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin: 10px 0;
+      padding: 8px;
+      font-family: monospace;
+    }
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .status {
+      margin-top: 10px;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pin Tabs Settings</h1>
+  <p>Enter the URLs to pin (one per line):</p>
+  <textarea id="urls" placeholder="https://example.com
+https://mail.google.com"></textarea>
+  <div>
+    <button id="save">Save</button>
+    <span id="status" class="status">Settings saved!</span>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html> 
