@@ -1,20 +1,25 @@
 // Listen for when a new window is created
 chrome.windows.onCreated.addListener(async (window) => {
+  // Get existing tabs in the window first
+  const existingTabs = await chrome.tabs.query({ windowId: window.id });
+  
   // Get the pinned URLs from storage
   chrome.storage.sync.get(
     { pinnedUrls: "" },
     async (items) => {
-      // Split the URLs by new line
       const urls = items.pinnedUrls.split('\n').filter(url => url.trim() !== '');
       
-      // Create and pin each tab
+      // Check which URLs are already open in this window
+      const existingUrls = existingTabs.map(tab => tab.url);
+      
+      // Create and pin only tabs that don't already exist
       for (const url of urls) {
-        if (url.trim()) {
+        if (url.trim() && !existingUrls.includes(url.trim())) {
           await chrome.tabs.create({
             url: url.trim(),
             windowId: window.id,
-            active: false, // Don't make it the active tab
-            pinned: true   // Pin the tab immediately during creation
+            active: false,
+            pinned: true
           });
         }
       }
